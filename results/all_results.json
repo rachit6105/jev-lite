@@ -1,0 +1,30 @@
+{
+  "Qwen/Qwen3-0.6B|kvscore|L27|lse|q-last": {
+    "emotion": {
+      "accuracy": 0.299
+    },
+    "banking77": {
+      "accuracy": 0.023081924577373212
+    },
+    "commonsense_qa": {
+      "accuracy": 0.2375102375102375
+    },
+    "ag_news": {
+      "accuracy": 0.25
+    }
+  },
+  "Qwen/Qwen3-0.6B|kvscore|L27|max|q-mean": {
+    "emotion": {
+      "accuracy": 0.0
+    },
+    "banking77": {
+      "accuracy": 0.0
+    },
+    "commonsense_qa": {
+      "accuracy": 0.0
+    },
+    "ag_news": {
+      "accuracy": 0.0
+    }
+  }
+}

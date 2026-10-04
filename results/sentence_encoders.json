@@ -39,116 +39,116 @@
   },
   "BAAI/bge-small-en-v1.5 (descriptions)": {
     "emotion": {
-      "accuracy": 0.495,
-      "mean_correct_probability": 0.17418017578125,
-      "mean_probability_margin": 0.0064189453125,
-      "mean_correct_margin": -0.0001865234375,
-      "mean_score_margin": -0.0017412109375,
-      "mean_normalized_entropy": 0.999325433164835,
-      "mean_nll": 1.74877734375
+      "accuracy": 0.467,
+      "mean_correct_probability": 0.4492773627670105,
+      "mean_probability_margin": 0.6837659532055259,
+      "mean_correct_margin": -0.01085312525464567,
+      "mean_score_margin": -0.4775517921447754,
+      "mean_normalized_entropy": 0.26514379217880013,
+      "mean_nll": 2.514139310428697
     },
     "banking77": {
-      "accuracy": 0.7002600780234071,
-      "mean_correct_probability": 0.016187392533678072,
-      "mean_probability_margin": 0.0009645578610106469,
-      "mean_correct_margin": 0.0006046171151150033,
-      "mean_score_margin": 0.03636520643693108,
-      "mean_normalized_entropy": 0.9999872446060181,
-      "mean_nll": 4.126285151170351
+      "accuracy": 0.7041612483745123,
+      "mean_correct_probability": 0.6778482758968294,
+      "mean_probability_margin": 0.7897838765442836,
+      "mean_correct_margin": 0.420304793648127,
+      "mean_score_margin": 3.05564405890218,
+      "mean_normalized_entropy": 0.08373210444126175,
+      "mean_nll": 1.5089231606574607
     },
     "commonsense_qa": {
-      "accuracy": 0.40294840294840295,
-      "mean_correct_probability": 0.20817177262489764,
-      "mean_probability_margin": 0.010729390612203113,
-      "mean_correct_margin": -0.003821470618345618,
-      "mean_score_margin": -0.01928970874283374,
-      "mean_normalized_entropy": 0.9989868786664989,
-      "mean_nll": 1.5712530712530712
+      "accuracy": 0.4037674037674038,
+      "mean_correct_probability": 0.3985590122690242,
+      "mean_probability_margin": 0.7764185115170225,
+      "mean_correct_margin": -0.14253353496080906,
+      "mean_score_margin": -1.797292407861408,
+      "mean_normalized_entropy": 0.19466599560555004,
+      "mean_nll": 4.200589161123636
     },
     "ag_news": {
-      "accuracy": 0.8005263157894736,
-      "mean_correct_probability": 0.2631880910773026,
-      "mean_probability_margin": 0.01326403166118421,
-      "mean_correct_margin": 0.010113332648026316,
-      "mean_score_margin": 0.038922183388157894,
-      "mean_normalized_entropy": 0.9992405750406416,
-      "mean_nll": 1.3363558799342106
+      "accuracy": 0.8084210526315789,
+      "mean_correct_probability": 0.7896255592266415,
+      "mean_probability_margin": 0.8511021204645697,
+      "mean_correct_margin": 0.5974619971331608,
+      "mean_score_margin": 4.061269638914811,
+      "mean_normalized_entropy": 0.15103263488715934,
+      "mean_nll": 0.7209568246679277
     }
   },
   "BAAI/bge-small-en-v1.5": {
     "emotion": {
-      "accuracy": 0.512,
-      "mean_correct_probability": 0.17553214862197639,
-      "mean_probability_margin": 0.007393648467957974,
-      "mean_correct_margin": 0.000150064118206501,
-      "mean_score_margin": 6.879761815071106e-06,
-      "mean_normalized_entropy": 0.9992228473126888,
-      "mean_nll": 1.7412063747048379
+      "accuracy": 0.4955,
+      "mean_correct_probability": 0.4764242600996041,
+      "mean_probability_margin": 0.7115701739639044,
+      "mean_correct_margin": 0.023063152022560367,
+      "mean_score_margin": -0.4074780559539795,
+      "mean_normalized_entropy": 0.22946100256480925,
+      "mean_nll": 2.659534784674515
     },
     "banking77": {
-      "accuracy": 0.6888816644993498,
-      "mean_correct_probability": 0.01680741205439698,
-      "mean_probability_margin": 0.0012330880324430134,
-      "mean_correct_margin": 0.0007410704670534487,
-      "mean_score_margin": 0.04186186406601545,
-      "mean_normalized_entropy": 0.9991066986198388,
-      "mean_nll": 4.090628685582288
+      "accuracy": 0.6788036410923277,
+      "mean_correct_probability": 0.664001947672761,
+      "mean_probability_margin": 0.8148551536203206,
+      "mean_correct_margin": 0.39023053987398093,
+      "mean_score_margin": 3.5003037830943096,
+      "mean_normalized_entropy": 0.07107114716194929,
+      "mean_nll": 2.0771110144078166
     },
     "commonsense_qa": {
-      "accuracy": 0.4013104013104013,
-      "mean_correct_probability": 0.20817233197372728,
-      "mean_probability_margin": 0.010694593239963104,
-      "mean_correct_margin": -0.0038090705700725147,
-      "mean_score_margin": -0.01917270909656178,
-      "mean_normalized_entropy": 0.9986961800284702,
-      "mean_nll": 1.571274581939641
+      "accuracy": 0.4037674037674038,
+      "mean_correct_probability": 0.3985590122690242,
+      "mean_probability_margin": 0.7764185115170225,
+      "mean_correct_margin": -0.14253353496080906,
+      "mean_score_margin": -1.797292407861408,
+      "mean_normalized_entropy": 0.19466599560555004,
+      "mean_nll": 4.200589161123636
     },
     "ag_news": {
-      "accuracy": 0.6639473684210526,
-      "mean_correct_probability": 0.2615683336673599,
-      "mean_probability_margin": 0.012446966206556873,
-      "mean_correct_margin": 0.006157168579336844,
-      "mean_score_margin": 0.023457386677986698,
-      "mean_normalized_entropy": 0.9992363749366058,
-      "mean_nll": 1.3417922209438524
+      "accuracy": 0.6931578947368421,
+      "mean_correct_probability": 0.6739313311084164,
+      "mean_probability_margin": 0.7909770899991456,
+      "mean_correct_margin": 0.38034623251376615,
+      "mean_score_margin": 2.7875661408273795,
+      "mean_normalized_entropy": 0.20882617098494785,
+      "mean_nll": 1.2111249144917542
     }
   },
   "BAAI/bge-m3": {
     "emotion": {
       "accuracy": 0.417,
-      "mean_correct_probability": 0.1727352931201458,
-      "mean_probability_margin": 0.00535710246115923,
-      "mean_correct_margin": -0.0017464595288038253,
-      "mean_score_margin": -0.010659305840730667,
-      "mean_normalized_entropy": 0.9994416578114033,
-      "mean_nll": 1.7568711690306664
+      "mean_correct_probability": 0.40378206898223434,
+      "mean_probability_margin": 0.6757656522989273,
+      "mean_correct_margin": -0.10077997725217398,
+      "mean_score_margin": -1.0659306011199952,
+      "mean_normalized_entropy": 0.26579822439930667,
+      "mean_nll": 2.871140200624267
     },
     "banking77": {
       "accuracy": 0.6472691807542262,
-      "mean_correct_probability": 0.016330460783442958,
-      "mean_probability_margin": 0.0010121792587554578,
-      "mean_correct_margin": 0.00048693423450080333,
-      "mean_score_margin": 0.027387414849393544,
-      "mean_normalized_entropy": 0.9992064291851108,
-      "mean_nll": 4.1187815071702465
+      "mean_correct_probability": 0.6346623209483027,
+      "mean_probability_margin": 0.8181203472850692,
+      "mean_correct_margin": 0.33045652142230075,
+      "mean_score_margin": 2.738741464205619,
+      "mean_normalized_entropy": 0.06931956140626833,
+      "mean_nll": 2.5378073087192066
     },
     "commonsense_qa": {
       "accuracy": 0.42424242424242425,
-      "mean_correct_probability": 0.20746331682076324,
-      "mean_probability_margin": 0.010050838411977113,
-      "mean_correct_margin": -0.0035160283979873597,
-      "mean_score_margin": -0.0178343264125196,
-      "mean_normalized_entropy": 0.9988770561077671,
-      "mean_nll": 1.5745720147696018
+      "mean_correct_probability": 0.41631769807758123,
+      "mean_probability_margin": 0.7761097145217252,
+      "mean_correct_margin": -0.11148218301818645,
+      "mean_score_margin": -1.7834325941930922,
+      "mean_normalized_entropy": 0.19092230975071756,
+      "mean_nll": 4.30634409285783
     },
     "ag_news": {
       "accuracy": 0.7307894736842105,
-      "mean_correct_probability": 0.2619142904191425,
-      "mean_probability_margin": 0.01282592620308462,
-      "mean_correct_margin": 0.008428634440428332,
-      "mean_score_margin": 0.0322331496837892,
-      "mean_normalized_entropy": 0.9993306064997849,
-      "mean_nll": 1.340464642047882
+      "mean_correct_probability": 0.7091089469565668,
+      "mean_probability_margin": 0.8134151692374757,
+      "mean_correct_margin": 0.4501861289267425,
+      "mean_score_margin": 3.223314982966373,
+      "mean_normalized_entropy": 0.19336879748556454,
+      "mean_nll": 1.1116976773823106
     }
   },
   "sentence-transformers/all-MiniLM-L6-v2": {
@@ -187,6 +187,120 @@
       "mean_score_margin": 0.0261451260637688,
       "mean_normalized_entropy": 0.9985632043527929,
       "mean_nll": 1.3309323362300272
+    }
+  },
+  "intfloat/e5-small-v2": {
+    "emotion": {
+      "accuracy": 0.464,
+      "mean_correct_probability": 0.39913832910660496,
+      "mean_probability_margin": 0.41965367885679006,
+      "mean_correct_margin": 0.022078878653603168,
+      "mean_score_margin": -0.19556294631958007,
+      "mean_normalized_entropy": 0.556372868465376,
+      "mean_nll": 1.5448321275334456
+    },
+    "banking77": {
+      "accuracy": 0.5890767230169051,
+      "mean_correct_probability": 0.5139685681823895,
+      "mean_probability_margin": 0.5604498810601095,
+      "mean_correct_margin": 0.27400258604974087,
+      "mean_score_margin": 0.840856135434075,
+      "mean_normalized_entropy": 0.26627247880994026,
+      "mean_nll": 1.7572114393648677
+    },
+    "commonsense_qa": {
+      "accuracy": 0.41113841113841115,
+      "mean_correct_probability": 0.37515087144127235,
+      "mean_probability_margin": 0.5023614115567602,
+      "mean_correct_margin": -0.08411073931435725,
+      "mean_score_margin": -0.7123891532079398,
+      "mean_normalized_entropy": 0.4857293718681254,
+      "mean_nll": 1.9492988449562336
+    },
+    "ag_news": {
+      "accuracy": 0.6852631578947368,
+      "mean_correct_probability": 0.5716448382355462,
+      "mean_probability_margin": 0.5074200507390656,
+      "mean_correct_margin": 0.24960345954409077,
+      "mean_score_margin": 0.7369704547681306,
+      "mean_normalized_entropy": 0.5329948151788038,
+      "mean_nll": 0.8177431822937031
+    }
+  },
+  "intfloat/e5-small-v2(descriptions)": {
+    "emotion": {
+      "accuracy": 0.4615,
+      "mean_correct_probability": 0.3765625952905757,
+      "mean_probability_margin": 0.3914243887960911,
+      "mean_correct_margin": -0.010635920323300525,
+      "mean_score_margin": -0.25687067794799806,
+      "mean_normalized_entropy": 0.5928298494179035,
+      "mean_nll": 1.50643924362291
+    },
+    "banking77": {
+      "accuracy": 0.6501950585175552,
+      "mean_correct_probability": 0.5248475728665902,
+      "mean_probability_margin": 0.5232342539139586,
+      "mean_correct_margin": 0.3097124305933897,
+      "mean_score_margin": 1.0281608913902809,
+      "mean_normalized_entropy": 0.30213943648407365,
+      "mean_nll": 1.3626084173115351
+    },
+    "commonsense_qa": {
+      "accuracy": 0.41113841113841115,
+      "mean_correct_probability": 0.37515087144127235,
+      "mean_probability_margin": 0.5023614115567602,
+      "mean_correct_margin": -0.08411073931435725,
+      "mean_score_margin": -0.7123891532079398,
+      "mean_normalized_entropy": 0.4857293718681254,
+      "mean_nll": 1.9492988449562336
+    },
+    "ag_news": {
+      "accuracy": 0.7985526315789474,
+      "mean_correct_probability": 0.6781482341360932,
+      "mean_probability_margin": 0.5940993152990153,
+      "mean_correct_margin": 0.4427571012753929,
+      "mean_score_margin": 1.5089565548143888,
+      "mean_normalized_entropy": 0.4708650021257467,
+      "mean_nll": 0.5458195569999608
+    }
+  },
+  "sentence-transformers/all-MiniLM-L6-v2(descriptions)": {
+    "emotion": {
+      "accuracy": 0.4505,
+      "mean_correct_probability": 0.1775765502527356,
+      "mean_probability_margin": 0.010954800575971603,
+      "mean_correct_margin": -0.001424398198723793,
+      "mean_score_margin": -0.009823434432502836,
+      "mean_normalized_entropy": 0.9984419747292995,
+      "mean_nll": 1.7311774032115936
+    },
+    "banking77": {
+      "accuracy": 0.6661248374512354,
+      "mean_correct_probability": 0.019263275115725297,
+      "mean_probability_margin": 0.002060469824297569,
+      "mean_correct_margin": 0.0011642528882538428,
+      "mean_score_margin": 0.05594249780354016,
+      "mean_normalized_entropy": 0.9979374618190783,
+      "mean_nll": 3.9607093010209162
+    },
+    "commonsense_qa": {
+      "accuracy": 0.40294840294840295,
+      "mean_correct_probability": 0.21212330802262172,
+      "mean_probability_margin": 0.01738823067936909,
+      "mean_correct_margin": -0.006141023983435978,
+      "mean_score_margin": -0.030948669053949752,
+      "mean_normalized_entropy": 0.99695175041633,
+      "mean_nll": 1.5552232464642723
+    },
+    "ag_news": {
+      "accuracy": 0.775,
+      "mean_correct_probability": 0.2713341756243455,
+      "mean_probability_margin": 0.021761881922812837,
+      "mean_correct_margin": 0.015551331219704527,
+      "mean_score_margin": 0.058335046310982616,
+      "mean_normalized_entropy": 0.9980601160463534,
+      "mean_nll": 1.3059379430036795
     }
   }
 }

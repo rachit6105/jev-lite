@@ -80,3 +80,81 @@ DATASET_ADAPTERS = {
     "banking77" : adapt_banking77,
     "commonsense_qa": adapt_commonsense_qa,
 }
+
+from datasets import load_dataset
+import random
+
+
+def load_commonsenseqa(split="train"):
+    ds = load_dataset("tau/commonsense_qa",cache_dir="./data")
+
+    data = []
+
+    for ex in ds[split]:
+        labels = ex["choices"]["label"]
+        options = ex["choices"]["text"]
+        answer = labels.index(ex["answerKey"])
+
+        data.append({
+            "dataset": "commonsense_qa",
+            "question": ex["question"],
+            "options": options,
+            "label": answer
+        })
+
+    return data
+
+
+def load_openbookqa(split="train"):
+    ds = load_dataset("allenai/openbookqa", "main",cache_dir="./data")
+
+    data = []
+
+    for ex in ds[split]:
+        labels = ex["choices"]["label"]
+        options = ex["choices"]["text"]
+        answer = labels.index(ex["answerKey"])
+
+        data.append({
+            "dataset": "openbookqa",
+            "question": ex["question_stem"],
+            "options": options,
+            "label": answer
+        })
+
+    return data
+
+
+def load_arc_easy(split="train"):
+    ds = load_dataset("allenai/ai2_arc", "ARC-Easy",cache_dir="./data")
+
+    data = []
+
+    for ex in ds[split]:
+        labels = ex["choices"]["label"]
+
+        if ex["answerKey"] not in labels:
+            continue
+
+        data.append({
+            "dataset": "arc_easy",
+            "question": ex["question"],
+            "options": ex["choices"]["text"],
+            "label": labels.index(ex["answerKey"])
+        })
+
+    return data
+
+
+def load_training_data(split="train"):
+    data = []
+
+    data += load_commonsenseqa(split=split)
+    data += load_openbookqa(split=split)
+    data += load_arc_easy(split=split)
+
+    random.shuffle(data)
+
+    print("Total training samples:", len(data))
+
+    return data

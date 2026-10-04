@@ -129,14 +129,14 @@
       "mean_inference_ms": 19.16054885389167
     },
     "banking77": {
-      "accuracy": 0.2893368010403121,
-      "mean_correct_probability": 0.05693488828419811,
-      "mean_probability_margin": 0.02971013704186453,
-      "mean_correct_margin": -0.015488525839544224,
-      "mean_score_margin": -0.998720982604901,
-      "mean_normalized_entropy": 0.8258916011131011,
-      "mean_nll": 3.6566802254927637,
-      "mean_inference_ms": 162.71988532349775
+      "accuracy": 0.673927178153446,
+      "mean_correct_probability": 0.5401487890322134,
+      "mean_probability_margin": 0.5496788793188969,
+      "mean_correct_margin": 0.3285640472088204,
+      "mean_score_margin": 1.3228186913057483,
+      "mean_normalized_entropy": 0.346662630423327,
+      "mean_nll": 1.2746746197678342,
+      "mean_inference_ms": 134.83436016547793
     },
     "ag_news": {
       "accuracy": 0.8906578947368421,
@@ -203,14 +203,14 @@
       "mean_inference_ms": 16.041303395071736
     },
     "banking77": {
-      "accuracy": 0.3364759427828348,
-      "mean_correct_probability": 0.10443158286349612,
-      "mean_probability_margin": 0.060482065780730176,
-      "mean_correct_margin": -0.030317743531236698,
-      "mean_score_margin": -0.8540809872246533,
-      "mean_normalized_entropy": 0.7632027842075368,
-      "mean_nll": 2.9200198642027857,
-      "mean_inference_ms": 130.6585347966931
+      "accuracy": 0.43953185955786733,
+      "mean_correct_probability": 0.17428103544931475,
+      "mean_probability_margin": 0.12110371978030636,
+      "mean_correct_margin": 0.0037863103212215404,
+      "mean_score_margin": -0.43564049304694286,
+      "mean_normalized_entropy": 0.7120458004107246,
+      "mean_nll": 2.335441690001283,
+      "mean_inference_ms": 104.36102301697076
     },
     "ag_news": {
       "accuracy": 0.7890789473684211,
@@ -277,14 +277,14 @@
       "mean_inference_ms": 17.204919980529667
     },
     "banking77": {
-      "accuracy": 0.017555266579973992,
-      "mean_correct_probability": 0.018956811172927912,
-      "mean_probability_margin": 0.011141623350366543,
-      "mean_correct_margin": -0.036291151356393804,
-      "mean_score_margin": -1.99058168704085,
-      "mean_normalized_entropy": 0.8563153433222299,
-      "mean_nll": 4.935385367417677,
-      "mean_inference_ms": 155.63944653256908
+      "accuracy": 0.39759427828348504,
+      "mean_correct_probability": 0.2398906426520254,
+      "mean_probability_margin": 0.25449018064833046,
+      "mean_correct_margin": -0.026282790141797695,
+      "mean_score_margin": -0.8121245325929322,
+      "mean_normalized_entropy": 0.5320206376347298,
+      "mean_nll": 2.522137808242888,
+      "mean_inference_ms": 47.82218474496751
     },
     "ag_news": {
       "accuracy": 0.6056578947368421,
@@ -351,14 +351,14 @@
       "mean_inference_ms": 13.28141005809448
     },
     "banking77": {
-      "accuracy": 0.28381014304291285,
-      "mean_correct_probability": 0.07980740751520252,
-      "mean_probability_margin": 0.03781295836247959,
-      "mean_correct_margin": -0.028722447014323853,
-      "mean_score_margin": -0.7497718875212849,
-      "mean_normalized_entropy": 0.8487926388670471,
-      "mean_nll": 3.005490228553122,
-      "mean_inference_ms": 110.08652150452552
+      "accuracy": 0.5962288686605982,
+      "mean_correct_probability": 0.2021048010480351,
+      "mean_probability_margin": 0.1558996687058277,
+      "mean_correct_margin": 0.08047659677765646,
+      "mean_score_margin": 0.2785767594301499,
+      "mean_normalized_entropy": 0.787294148303985,
+      "mean_nll": 2.0740205506819587,
+      "mean_inference_ms": 85.20396922767937
     },
     "ag_news": {
       "accuracy": 0.8875,
@@ -425,14 +425,14 @@
       "mean_inference_ms": 17.02836139236024
     },
     "banking77": {
-      "accuracy": 0.1498699609882965,
-      "mean_correct_probability": 0.05197706373661969,
-      "mean_probability_margin": 0.04157094155790669,
-      "mean_correct_margin": -0.05102686452560234,
-      "mean_score_margin": -1.3764661352485612,
-      "mean_normalized_entropy": 0.8173954838060898,
-      "mean_nll": 3.7056673793473385,
-      "mean_inference_ms": 154.12522499743835
+      "accuracy": 0.6352405721716515,
+      "mean_correct_probability": 0.3852294033725659,
+      "mean_probability_margin": 0.3690889547524492,
+      "mean_correct_margin": 0.20852986457230357,
+      "mean_score_margin": 0.6264622499790862,
+      "mean_normalized_entropy": 0.5449756853820172,
+      "mean_nll": 1.6649966628172026,
+      "mean_inference_ms": 47.88500224225175
     },
     "ag_news": {
       "accuracy": 0.895921052631579,
@@ -443,6 +443,66 @@
       "mean_normalized_entropy": 0.14057797457927862,
       "mean_nll": 0.4107599444008098,
       "mean_inference_ms": 18.434036026582792
+    }
+  },
+  "MoritzLaurer/deberta-v3-large-zeroshot-v2.0 (labels)": {
+    "banking77": {
+      "accuracy": 0.6778283485045513,
+      "mean_correct_probability": 0.5127321783730375,
+      "mean_probability_margin": 0.48340922474536574,
+      "mean_correct_margin": 0.2826745550663505,
+      "mean_score_margin": 0.8099557895344163,
+      "mean_normalized_entropy": 0.34705760680327996,
+      "mean_nll": 1.2952189855870968,
+      "mean_inference_ms": 110.50424942568995
+    }
+  },
+  "MoritzLaurer/deberta-v3-base-zeroshot-v2.0 (labels)": {
+    "banking77": {
+      "accuracy": 0.653446033810143,
+      "mean_correct_probability": 0.44655318037665326,
+      "mean_probability_margin": 0.41161390588351165,
+      "mean_correct_margin": 0.21261079246155373,
+      "mean_score_margin": 0.4280339006639736,
+      "mean_normalized_entropy": 0.4174627525143335,
+      "mean_nll": 1.4995198797674363,
+      "mean_inference_ms": 39.96336570054286
+    }
+  },
+  "facebook/bart-large-mnli (labels)": {
+    "banking77": {
+      "accuracy": 0.46716514954486343,
+      "mean_correct_probability": 0.14347182321031232,
+      "mean_probability_margin": 0.09606580055101989,
+      "mean_correct_margin": 0.012364603212530988,
+      "mean_score_margin": -0.3913517707501028,
+      "mean_normalized_entropy": 0.7855284230296726,
+      "mean_nll": 2.5399946655559758,
+      "mean_inference_ms": 139.57295376134053
+    }
+  },
+  "cross-encoder/nli-deberta-v3-base (labels)": {
+    "banking77": {
+      "accuracy": 0.40377113133940185,
+      "mean_correct_probability": 0.26267813116780603,
+      "mean_probability_margin": 0.24732279047001787,
+      "mean_correct_margin": -0.010529376005858558,
+      "mean_score_margin": -0.8679811683215772,
+      "mean_normalized_entropy": 0.49322040839258807,
+      "mean_nll": 2.474950335888369,
+      "mean_inference_ms": 39.865755432931635
+    }
+  },
+  "MoritzLaurer/bge-m3-zeroshot-v2.0 (labels)": {
+    "banking77": {
+      "accuracy": 0.6638491547464239,
+      "mean_correct_probability": 0.27558031723554816,
+      "mean_probability_margin": 0.21875190273440784,
+      "mean_correct_margin": 0.13191105623400112,
+      "mean_score_margin": 0.4025718822435843,
+      "mean_normalized_entropy": 0.6919327883391371,
+      "mean_nll": 1.7630278185029333,
+      "mean_inference_ms": 70.57351876464348
     }
   }
 }

@@ -43,7 +43,7 @@ def get_scores(model, query, candidates):
     if callable(score):
         return score(query, candidates)
 
-    return F.cosine_similarity(query.unsqueeze(0), candidates, dim=1)
+    return F.cosine_similarity(query.unsqueeze(0), candidates, dim=1)*100
 
 def compute_metrics(scores, correct_index):
     probs = torch.softmax(scores, dim=0)
@@ -188,69 +188,47 @@ def eval_cross_encoder(queries, candidates, labels, tokenizer, model, shared_can
         results[f"mean_{k}"] = sum(v) / len(v)
     return results
 
+#---------------------------------------------------------------------------------------
 
-# ---- For LLM OUTPUT logits change----
-import string
-import torch
-
-def _letter_token_ids(tokenizer, n=26):
-    """Token id of ' A', ' B', ... (the token that follows 'Answer:'). Must be single tokens."""
-    ids = []
-    for i in range(n):
-        t = tokenizer.encode(" " + string.ascii_uppercase[i], add_special_tokens=False)
-        if len(t) != 1:
-            raise ValueError(f"Letter {string.ascii_uppercase[i]} is not a single token: {t}")
-        ids.append(t[0])
-    return ids
-
-
-@torch.no_grad()
-def score_letters(tokenizer, model, query, candidates, letter_ids, device="cuda"):
-    """Version 1: prompt lists all options as A/B/C/...; score only the option-letter logits."""
-    k = len(candidates)
-    options = "\n".join(f"{string.ascii_uppercase[i]}. {c}" for i, c in enumerate(candidates))
-    prompt = f"Choose the correct option.\n\nQuestion: {query}\nOptions:\n{options}\n\nAnswer:"
-    inputs = tokenizer(prompt, return_tensors="pt").to(device)
-    last_logits = model(**inputs).logits[0, -1]                      # full-vocab logits, next token
-    idx = torch.tensor(letter_ids[:k], device=last_logits.device)
-    return last_logits[idx].float().cpu()                            # keep only A..(k-th letter)
+def score_pairs_nli(tokenizer, model, premise, hypotheses, ent_idx, device="cuda",
+                    batch_size=64, max_length=512):
+    """NLI cross-encoder: entailment logit for (premise, hypothesis) pairs, one per hypothesis."""
+    scores = []
+    for i in range(0, len(hypotheses), batch_size):
+        chunk = hypotheses[i:i + batch_size]
+        batch = tokenizer([premise] * len(chunk), chunk, padding=True, truncation=True,
+                          max_length=max_length, return_tensors="pt")
+        batch = {k: v.to(device) for k, v in batch.items()}
+        with torch.no_grad():
+            logits = model(**batch).logits                  # [n, num_nli_labels]
+        scores.append(logits[:, ent_idx].float().cpu())
+    return torch.cat(scores)
 
 
-@torch.no_grad()
-def score_texts(tokenizer, model, query, candidates, device="cuda",
-                batch_size=16, length_normalize=True):
-    """Version 2: log P(candidate text | question), mean over candidate tokens by default."""
-    prompt_ids = tokenizer.encode(f"Question: {query}\nAnswer:", add_special_tokens=False)
-    P = len(prompt_ids)
-    pad_id = tokenizer.pad_token_id if tokenizer.pad_token_id is not None else 0
-    out = []
+# ---- Append this to the bottom of src/utils.py ----
+# ---- Append this to the bottom of src/utils.py ----
+import time
 
-    for i in range(0, len(candidates), batch_size):
-        chunk = candidates[i:i + batch_size]
-        cand_ids = [tokenizer.encode(" " + c, add_special_tokens=False) for c in chunk]
-        seqs = [prompt_ids + c for c in cand_ids]
-        L = max(len(s) for s in seqs)
-        input_ids = torch.tensor([s + [pad_id] * (L - len(s)) for s in seqs], device=device)
-        attn = torch.tensor([[1] * len(s) + [0] * (L - len(s)) for s in seqs], device=device)
-
-        # logits at position t predict token t+1, so candidate tokens are predicted from P-1 onward
-        logits = model(input_ids=input_ids, attention_mask=attn).logits[:, P - 1:].float()
-        logp = torch.log_softmax(logits, dim=-1)
-
-        for j, c in enumerate(cand_ids):
-            tgt = torch.tensor(c, device=device)
-            lp = logp[j, :len(c)].gather(1, tgt[:, None]).squeeze(1)
-            out.append((lp.mean() if length_normalize else lp.sum()).item())
-
-    return torch.tensor(out)
+def score_pairs_nli(tokenizer, model, premise, hypotheses, ent_idx, device="cuda",
+                    batch_size=64, max_length=512):
+    """NLI cross-encoder: entailment logit for (premise, hypothesis) pairs, one per hypothesis."""
+    scores = []
+    for i in range(0, len(hypotheses), batch_size):
+        chunk = hypotheses[i:i + batch_size]
+        batch = tokenizer([premise] * len(chunk), chunk, padding=True, truncation=True,
+                          max_length=max_length, return_tensors="pt")
+        batch = {k: v.to(device) for k, v in batch.items()}
+        with torch.no_grad():
+            logits = model(**batch).logits                  # [n, num_nli_labels]
+        scores.append(logits[:, ent_idx].float().cpu())
+    return torch.cat(scores)
 
 
-def eval_llm(queries, candidates, labels, tokenizer, model, shared_candidates: bool,
-             mode="letter", device="cuda", max_samples=None):
-    """Same inputs/outputs as eval_, but an LLM's decision is restricted to the candidate set.
-    mode="letter": constrained A/B/C/... logits (max 26 candidates)
-    mode="text":   length-normalised log-likelihood of each candidate string
-    """
+def eval_nli_cross_encoder(queries, candidates, labels, tokenizer, model, shared_candidates: bool,
+                           template="This example is {}.", device="cuda", max_samples=None,
+                           batch_size=64):
+    """Same inputs/outputs as eval_. premise = query, hypothesis = template.format(candidate);
+    score = entailment logit, softmaxed across candidates inside compute_metrics."""
     if not (len(queries) == len(candidates) == len(labels)):
         raise ValueError("queries, candidates, and labels must have the same length")
     if max_samples is not None:
@@ -261,22 +239,39 @@ def eval_llm(queries, candidates, labels, tokenizer, model, shared_candidates: b
         raise ValueError("Cannot evaluate an empty dataset")
     if shared_candidates and any(candidates[0] != item for item in candidates):
         raise ValueError("All candidate sets must match when shared_candidates=True")
-    if mode == "letter" and max(len(c) for c in candidates) > 26:
-        raise ValueError("letter mode supports at most 26 candidates; use mode='text'")
 
-    letter_ids = _letter_token_ids(tokenizer) if mode == "letter" else None
+    # Find the entailment output by name -- label order differs between NLI models
+    ent_idx = next((int(i) for i, name in model.config.id2label.items()
+                    if name.lower().startswith("entail")), None)
+    if ent_idx is None:
+        raise ValueError(f"No entailment label in {model.config.id2label}")
+
+    use_cuda = str(device).startswith("cuda")
+
+    def sync():
+        if use_cuda:
+            torch.cuda.synchronize()   # GPU work is async; wait so the timer measures real compute
+
+    # Warm-up (untimed): the first call pays one-off CUDA init / kernel selection costs
+    score_pairs_nli(tokenizer, model, queries[0], [template.format(c) for c in candidates[0]],
+                    ent_idx, device, batch_size)
 
     correct = 0
+    times = []
     collected = {k: [] for k in
                  ["correct_probability", "probability_margin", "correct_margin",
                   "score_margin", "normalized_entropy", "nll"]}
 
     for query_text, candidate_set, correct_index in tqdm(
             zip(queries, candidates, labels), total=len(queries), desc="Inferencing", colour="blue"):
-        if mode == "letter":
-            scores = score_letters(tokenizer, model, query_text, candidate_set, letter_ids, device)
-        else:
-            scores = score_texts(tokenizer, model, query_text, candidate_set, device)
+        hypotheses = [template.format(c) for c in candidate_set]
+
+        sync()
+        t0 = time.perf_counter()
+        scores = score_pairs_nli(tokenizer, model, query_text, hypotheses, ent_idx, device, batch_size)
+        sync()
+        times.append(time.perf_counter() - t0)   # tokenization + transfer + forward, per query
+
         metrics = compute_metrics(scores, correct_index)   # reused unchanged
 
         correct += int(metrics["pred_index"] == correct_index)
@@ -286,4 +281,5 @@ def eval_llm(queries, candidates, labels, tokenizer, model, shared_candidates: b
     results = {"accuracy": correct / len(queries)}
     for k, v in collected.items():
         results[f"mean_{k}"] = sum(v) / len(v)
+    results["mean_inference_ms"] = 1000 * sum(times) / len(times)   # per query, all candidates
     return results
