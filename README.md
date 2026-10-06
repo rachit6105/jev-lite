@@ -4,7 +4,7 @@ This EE798 project asks how far a fixed-candidate model can go using semantic ma
 
 The evaluated datasets are AG News, Banking77, Emotion, and CommonsenseQA (CSQA). The main finding is that semantic scorers can perform well when the answer is already recoverable from the input, but struggle on CSQA. Adding relevant generated rationales improved accuracy and standardized answer margins across the tested scorers.
 
-Read the [final project report](ee798.pdf) for the full methods, results, and discussion.
+Read the [final project report](230820_Rachit_Agarwal.pdf) for the full methods, results, and discussion.
 
 ## Setup
 
