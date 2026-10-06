@@ -12,6 +12,7 @@ from src.configs import DATASETS
 from src.dataset_adapters import DATASET_ADAPTERS
 from src.utils import save_result, print_results, eval_
 
+# Uncomment exactly one MODEL_NAME to select the encoder to fine-tune.
 MODEL_NAME = "intfloat/e5-small-v2"
 # MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
 # MODEL_NAME = "BAAI/bge-small-en-v1.5"

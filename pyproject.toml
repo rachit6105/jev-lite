@@ -16,6 +16,7 @@ dependencies = [
     "tqdm>=4.66.0",
     "torch>=2.14.0",
     "transformers>=5.17.0",
+    "statsmodels>=0.15.0",
 ]
 
 [project.scripts]
@@ -26,5 +27,5 @@ py-modules = ["main"]
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["sentence_encoders*", "src*"]
+include = ["sentence_encoders*", "cross_encoder*", "recursive_lm*", "src*"]
 namespaces = true

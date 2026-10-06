@@ -1,7 +1,7 @@
 import torch
 import torch.nn.functional as F
 from transformers import AutoTokenizer
-from model import RecursiveMiniLM,FrozenCandidateEncoder
+from recursive_lm.recursive_minilm import RecursiveMiniLM, FrozenCandidateEncoder
 
 tokenizer = AutoTokenizer.from_pretrained("sentence-transformers/all-MiniLM-L6-v2")
 

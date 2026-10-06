@@ -6,8 +6,8 @@ import torch.nn.functional as F
 from tqdm import tqdm
 from transformers import AutoTokenizer
 
-from RecursiveLM.model import RecursiveMiniLM, FrozenCandidateEncoder
-from RecursiveLM.load_data import load_training_data, load_evaluation_data
+from recursive_lm.recursive_minilm import RecursiveMiniLM, FrozenCandidateEncoder
+from recursive_lm.dataset import load_training_data, load_evaluation_data
 
 
 MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"

@@ -6,14 +6,14 @@ from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
 from src.configs import DATASETS
 from src.dataset_adapters import DATASET_ADAPTERS
-from src.label_description import describe_candidates
+from src.label_description import _BANKING
 from src.utils import eval_nli_cross_encoder, print_results, save_result
 
 MODELS = {
     "MoritzLaurer/deberta-v3-large-zeroshot-v2.0": torch.float16,
-    "MoritzLaurer/deberta-v3-base-zeroshot-v2.0": torch.float32,
+    "MoritzLaurer/deberta-v3-base-zeroshot-v2.0": torch.float16,
     "facebook/bart-large-mnli": torch.float16,
-    "cross-encoder/nli-deberta-v3-base": torch.float32,
+    "cross-encoder/nli-deberta-v3-base": torch.float16,
     "MoritzLaurer/bge-m3-zeroshot-v2.0": torch.float16,
 }
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
@@ -28,12 +28,15 @@ TEMPLATES = {
     "ag_news": "The topic of this news article is {}.",
     "commonsense_qa": "The answer to the question is {}.",
 }
+BANKING77_COMPARISON_TEMPLATE = "This text is about {}."
 
 
 def main():
     # Load datasets once; they do not depend on the model
     prepared = {}
-    for dataset_name, config in DATASETS.items():
+    dataset_names = ("banking77",)
+    for dataset_name in dataset_names:
+        config = DATASETS[dataset_name]
         adapter = DATASET_ADAPTERS.get(dataset_name)
         dataset = load_dataset(config["hf_name"], cache_dir="/home/tichar/Documents/ee798/project/data")
         prepared[dataset_name] = (config, *adapter(dataset, config))
@@ -45,17 +48,17 @@ def main():
         print(f"\n##### {model_name} | id2label = {model.config.id2label}")
 
         for dataset_name, (config, queries, candidates, labels) in prepared.items():
-            template = TEMPLATES.get(dataset_name, DEFAULT_TEMPLATE)
+            template = BANKING77_COMPARISON_TEMPLATE
 
             # CommonsenseQA-style per-example candidates have no descriptions, so they run once, raw.
-            modes = [(False, model_name)]
+            modes = [(False, f"{model_name} (labels)")]
             if config["shared_candidates"]:
                 modes.append((True, f"{model_name} (descriptions)"))
             for use_desc, key in modes:
                 cands = candidates
                 if use_desc:
                     raw = candidates[0]
-                    described = describe_candidates(raw)  # raises if any class/description key fails to match
+                    described = [_BANKING[candidate.lower().strip()] for candidate in raw]
                     print(f"{dataset_name}: {len(described)}/{len(raw)} classes matched | e.g. {raw[0]} -> {described[0]}")
                     cands = [described] * len(candidates)
 

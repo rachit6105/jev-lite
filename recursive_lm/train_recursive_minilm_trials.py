@@ -2,7 +2,7 @@ import random
 import torch
 import torch.nn.functional as F
 from transformers import AutoTokenizer
-from model import RecursiveMiniLM, FrozenCandidateEncoder
+from recursive_lm.recursive_minilm import RecursiveMiniLM, FrozenCandidateEncoder
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 

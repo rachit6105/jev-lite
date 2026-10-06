@@ -3,10 +3,10 @@ from importlib import import_module
 
 
 ENCODERS = {
-    "bge-m3": "sentence_encoders.bge_small",
-    "bge-small-desc": "sentence_encoders.bge_desc",
+    "bge-m3": "sentence_encoders.eval_bge_m3",
+    "bge-small-desc": "sentence_encoders.eval_bge_small_descriptions",
     "e5-small-v2": "sentence_encoders.eval_e5_small_v2",
-    "minilm": "sentence_encoders.mini_lm_test",
+    "minilm": "sentence_encoders.eval_minilm",
 }
 
 
