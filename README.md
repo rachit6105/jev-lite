@@ -73,11 +73,7 @@ jev-lite/
 |   |-- configs.py                  # dataset and experiment configuration
 |   |-- dataset_adapters.py         # converts datasets to query/candidate examples
 |   `-- utils.py                    # scoring, evaluation metrics, and result saving
-|-- tests/                          # dataset checks and small research scripts
 |-- results/                        # experiment metrics, tables, and checkpoints
-|-- data/                           # locally cached datasets (created/downloaded as needed)
 |-- ee798.pdf                       # final project report
 `-- notes.md                        # experiment history and working conclusions
 ```
-
-The scripts in `tests/` are research and dataset utilities; the repository does not currently define a single automated test suite.
